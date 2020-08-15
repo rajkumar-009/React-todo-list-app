@@ -1,6 +1,8 @@
 import React from "react";
 import "./App.css";
 import Todos from "./components/Todos";
+import AddTodo from "./components/AddTodo";
+import Header from "./components/layout/Header";
 
 class App extends React.Component {
   state = {
@@ -33,10 +35,25 @@ class App extends React.Component {
       })
     });
   };
+  // function to delete a todolist item
+  delTodo = id => {
+    this.setState({
+      todos: [...this.state.todos.filter(todo => todo.id !== id)]
+    });
+  };
+
   render() {
     return (
       <div>
-        <Todos todos={this.state.todos} markComplete={this.markComplete} />
+        <div className="container">
+          <Header />
+          <AddTodo />
+          <Todos
+            todos={this.state.todos}
+            markComplete={this.markComplete}
+            delTodo={this.delTodo}
+          />
+        </div>
       </div>
     );
   }

@@ -23,7 +23,9 @@ class Todoitem extends React.Component {
           />{" "}
           {"  "}
           {title}
-          <button style={btnStyle}>x</button>
+          <button style={btnStyle} onClick={this.props.delTodo.bind(this, id)}>
+            x
+          </button>
         </p>
       </div>
     );
@@ -33,7 +35,8 @@ class Todoitem extends React.Component {
 //PropTypes
 Todoitem.propTypes = {
   todo: PropTypes.object.isRequired,
-  markComplete: PropTypes.func.isRequired
+  markComplete: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired
 };
 // styling for delete button
 const btnStyle = {

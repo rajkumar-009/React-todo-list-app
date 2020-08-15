@@ -10,6 +10,7 @@ class Todos extends React.Component {
         key={todo.id} //key is important as map function returns a list with unique keys
         todo={todo}
         markComplete={this.props.markComplete}
+        delTodo={this.props.delTodo}
       />
     ));
   }
@@ -18,6 +19,7 @@ class Todos extends React.Component {
 //PropTypes
 Todos.propTypes = {
   todos: PropTypes.array.isRequired,
-  markComplete: PropTypes.func.isRequired
+  markComplete: PropTypes.func.isRequired,
+  delTodo: PropTypes.func.isRequired
 };
 export default Todos;
