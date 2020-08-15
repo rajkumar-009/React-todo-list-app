@@ -4,21 +4,37 @@ import "./App.css";
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
 import Header from "./components/layout/Header";
-// import { v4 as uuid } from "uuid";
-import Axios from "axios";
+import { v4 as uuid } from "uuid";
+// import Axios from "axios";
 import About from "./components/pages/About";
 
 class App extends React.Component {
   state = {
-    todos: []
+    todos: [
+      {
+        id: uuid(),
+        title: "Type in the text area to add an item",
+        completed: false
+      },
+      {
+        id: uuid(),
+        title: "Click the delete button to delete item",
+        completed: false
+      },
+      {
+        id: uuid(),
+        title: "Click the checkbox to cross out an item",
+        completed: false
+      }
+    ]
   };
 
   //execute fetch request using axios library to fetch data from JSON placeholder
-  componentDidMount() {
-    Axios.get(
-      "https://jsonplaceholder.typicode.com/todos?_limit=10"
-    ).then(res => this.setState({ todos: res.data }));
-  }
+  // componentDidMount() {
+  //   Axios.get(
+  //     "https://jsonplaceholder.typicode.com/todos?_limit=10"
+  //   ).then(res => this.setState({ todos: res.data }));
+  // }
 
   // markComplete function to toggle completed value dynamically
   markComplete = id => {
@@ -33,29 +49,30 @@ class App extends React.Component {
   };
   // function to delete a todolist item
   delTodo = id => {
-    Axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`).then(res =>
-      this.setState({
-        todos: [...this.state.todos.filter(todo => todo.id !== id)]
-      })
-    );
+    this.setState({
+      todos: [...this.state.todos.filter(todo => todo.id !== id)]
+    });
   };
 
   //function to add a new item to the list from AddTodo component
   addTodo = title => {
-    Axios.post("https://jsonplaceholder.typicode.com/todos", {
+    const newTodo = {
+      id: uuid(),
       title: title,
       completed: false
-    }).then(res =>
+    };
+    if (title) {
       this.setState({
-        todos: [...this.state.todos, res.data]
-      })
-    );
+        todos: [...this.state.todos, newTodo]
+      });
+    } else {
+      alert("Kindly enter text");
+    }
   };
 
   render() {
     return (
       <Router>
-        {" "}
         {/*Router is used to wrap the content to be displayed. Must be done when using router*/}
         <div>
           <div className="container">

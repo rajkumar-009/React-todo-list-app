@@ -32,7 +32,7 @@ class AddTodo extends React.Component {
         />
         <input
           type="submit"
-          value="Submit"
+          value="Add"
           className="add-btn"
           style={{ flex: "1" }}
         />
