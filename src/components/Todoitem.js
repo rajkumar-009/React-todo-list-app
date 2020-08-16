@@ -8,7 +8,7 @@ class Todoitem extends React.Component {
       backgroundColor: "#f4f4f4",
       padding: "10px",
       borderBottom: "1px #ccc dotted",
-      textDecoration: this.props.todo.completed ? "line-through" : "none"
+      textDecoration: this.props.todo.completed ? "line-through" : "none",
     };
   };
 
@@ -23,7 +23,10 @@ class Todoitem extends React.Component {
           />{" "}
           {"  "}
           {title}
-          <button style={btnStyle} onClick={this.props.delTodo.bind(this, id)}>
+          <button
+            className="del-btn"
+            onClick={this.props.delTodo.bind(this, id)}
+          >
             x
           </button>
         </p>
@@ -36,17 +39,7 @@ class Todoitem extends React.Component {
 Todoitem.propTypes = {
   todo: PropTypes.object.isRequired,
   markComplete: PropTypes.func.isRequired,
-  delTodo: PropTypes.func.isRequired
-};
-// styling for delete button
-const btnStyle = {
-  backgroundColor: "#ff0000",
-  color: "#fff",
-  border: "none",
-  padding: "5px 10px",
-  borderRadius: "50%",
-  cursor: "pointer",
-  float: "right"
+  delTodo: PropTypes.func.isRequired,
 };
 
 export default Todoitem;

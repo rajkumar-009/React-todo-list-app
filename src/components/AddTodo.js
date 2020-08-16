@@ -4,31 +4,34 @@ import PropTypes from "prop-types";
 
 class AddTodo extends React.Component {
   state = {
-    title: ""
+    title: "",
   };
 
-  titleChange = e => this.setState({ [e.target.name]: e.target.value }); //function to update title in state.
+  titleChange = (e) => this.setState({ [e.target.name]: e.target.value }); //function to update title in state.
 
   //function to handle submit event
-  onSubmit = e => {
+  onSubmit = (e) => {
     e.preventDefault();
     this.props.addTodo(this.state.title);
     this.setState({
-      title: ""
+      title: "",
     });
   };
 
   render() {
     return (
       //form to get the todo item title
-      <form onSubmit={this.onSubmit} style={{ display: "flex" }}>
+      <form
+        onSubmit={this.onSubmit}
+        style={{ display: "flex", margin: "10px 0" }}
+      >
         <input
           type="text"
           name="title"
           placeholder="Add an item to the list"
           value={this.state.title}
           onChange={this.titleChange}
-          style={{ flex: "10", padding: "5px" }}
+          style={{ flex: "10", padding: "5px", marginRight: "5px" }}
         />
         <input
           type="submit"
@@ -43,7 +46,7 @@ class AddTodo extends React.Component {
 
 //propTypes
 AddTodo.propTypes = {
-  addTodo: PropTypes.func.isRequired
+  addTodo: PropTypes.func.isRequired,
 };
 
 export default AddTodo;

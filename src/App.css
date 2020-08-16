@@ -17,7 +17,7 @@ a {
 .container {
   padding: 0 15px;
 }
-
+/*Styling for Add button */
 .add-btn {
   display: inline-block;
   border: none;
@@ -29,4 +29,17 @@ a {
 
 .add-btn:hover {
   background-color: #3939ac;
+}
+/*Styling for Delete button */
+.del-btn {
+  background-color: #ff3333;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  padding: 5px 10px;
+  cursor: pointer;
+  float: right;
+}
+.del-btn:hover {
+  background-color: #e60000;
 }
